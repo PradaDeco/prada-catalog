@@ -1,0 +1,152 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================================================
+   Custom admin theme — brand twist
+   Black backgrounds, white text/buttons, primary color as the contrast accent.
+   Primary color is taken from global.css: oklch(62% 0.18 42deg)
+   ========================================================================== */
+
+/* Force our custom look regardless of the user's light/dark preference */
+html,
+html[data-theme='light'],
+html[data-theme='dark'] {
+  /* Brand primary (contrast accent) */
+  --brand-primary: oklch(62% 0.18 42deg);
+  --brand-primary-hover: oklch(68% 0.19 42deg);
+  --brand-primary-active: oklch(56% 0.18 42deg);
+  --brand-primary-foreground: oklch(98.5% 0 0deg);
+
+  /* Core theme */
+  --theme-bg: #000000;
+  --theme-text: #ffffff;
+  --theme-input-bg: #0d0d0d;
+  --theme-baseline: 20px;
+
+  /* Base color scale mapped dark -> light (0 = black bg, 1000 = white text) */
+  --theme-elevation-0: #000000;
+  --theme-elevation-25: #080808;
+  --theme-elevation-50: #101010;
+  --theme-elevation-75: #161616;
+  --theme-elevation-100: #1c1c1c;
+  --theme-elevation-150: #242424;
+  --theme-elevation-200: #2b2b2b;
+  --theme-elevation-250: #333333;
+  --theme-elevation-300: #3d3d3d;
+  --theme-elevation-350: #474747;
+  --theme-elevation-400: #4d4d4d;
+  --theme-elevation-450: #5c5c5c;
+  --theme-elevation-500: #666666;
+  --theme-elevation-550: #737373;
+  --theme-elevation-600: #808080;
+  --theme-elevation-650: #8c8c8c;
+  --theme-elevation-700: #999999;
+  --theme-elevation-750: #a6a6a6;
+  --theme-elevation-800: #b3b3b3;
+  --theme-elevation-850: #cccccc;
+  --theme-elevation-900: #e6e6e6;
+  --theme-elevation-950: #f2f2f2;
+  --theme-elevation-1000: #ffffff;
+
+  /* Keep status colors readable on black */
+  --theme-success-500: oklch(78% 0.08 200deg);
+  --theme-warning-500: oklch(89% 0.1 75deg);
+  --theme-error-500: oklch(75% 0.15 25deg);
+}
+
+/* Links & inline accents use the brand primary as the contrast color */
+.template-default a,
+.nav a:not(.nav__link--active),
+.doc-tab a {
+  color: var(--brand-primary);
+}
+
+/* Default buttons: white with black text */
+.btn--style-primary {
+  --color: #000000;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+
+  .btn__content {
+    color: #000000;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--theme-elevation-900);
+    border-color: var(--theme-elevation-900);
+    color: #000000;
+  }
+}
+
+.btn--style-secondary {
+  border-color: #ffffff;
+  color: #ffffff;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Contrast: brand-colored accents for the most important actions & active state */
+.btn.btn--style-primary.btn--icon-style-with-border,
+.doc-controls__controls .btn--style-primary,
+.form-submit .btn--style-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary-foreground);
+
+  .btn__content {
+    color: var(--brand-primary-foreground);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--brand-primary-hover);
+    border-color: var(--brand-primary-hover);
+    color: var(--brand-primary-foreground);
+  }
+
+  &:active {
+    background-color: var(--brand-primary-active);
+    border-color: var(--brand-primary-active);
+  }
+}
+
+/* Active navigation item highlighted with the brand color */
+.nav__link--active,
+.nav .nav__link.active {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+/* Focus rings & active form elements pick up the brand color */
+.field-type input:focus,
+.field-type textarea:focus,
+.field-type .rs__control--is-focused {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 1px var(--brand-primary);
+}
+
+/* Checkbox / radio checked state */
+.checkbox-input__input:checked ~ .checkbox-input__icon,
+.custom-checkbox--checked .custom-checkbox__input {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+/* Pill / status accents */
+.pill--has-action:hover {
+  background-color: var(--brand-primary);
+  color: var(--brand-primary-foreground);
+}
